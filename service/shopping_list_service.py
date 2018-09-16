@@ -2,6 +2,8 @@
 from models import models
 from core import db_utils
 from datetime import datetime
+from service import sl_items_service
+from service import item_service
 
 
 def get_sl() -> list:
@@ -29,19 +31,6 @@ def get_shoppingList_by_id(id: int) -> models.ShoppingList:
     """
     return models.ShoppingList.query.get(id)
 
-
-def get_shoppingList_by_title(title: str) -> list:
-    """Get shopping list by title
-
-    Args:
-        Shopping list title
-
-    Returns:
-        List of shopping lists
-
-    """
-    results = models.ShoppingList.query.filter(models.ShoppingList.title.like('%%%s%%' % title)).all()
-    return results
 
 
 def insert_new_shoppingList(_title: str, store: str = "") -> models.ShoppingList:
@@ -72,6 +61,7 @@ def delete_shoppingList(id: int) -> bool:
     """
     sl = get_shoppingList_by_id(id)
     if sl:
+        sl_items_service.delete_all_sl_items(id)
         db_utils.delete_from_db(sl)
         return True
     else:
