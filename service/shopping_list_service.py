@@ -32,6 +32,19 @@ def get_shoppingList_by_id(id: int) -> models.ShoppingList:
     return models.ShoppingList.query.get(id)
 
 
+def get_shoppingList_by_title(title: str) -> list:
+    """Get shopping list by title
+
+    Args:
+        Shopping list title
+
+    Returns:
+        List of shopping lists
+
+    """
+    results = models.ShoppingList.query.filter(models.ShoppingList.title.like('%%%s%%' % title)).all()
+    return results
+
 
 def insert_new_shoppingList(_title: str, store: str = "") -> models.ShoppingList:
     """Insert new shopping list

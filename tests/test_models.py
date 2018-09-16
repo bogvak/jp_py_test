@@ -66,6 +66,12 @@ class TestShoppingListClass(object):
     def test_get_sl_by_id(self):
         assert shopping_list_service.get_shoppingList_by_id(3).title == "Just a general Shopping List"
 
+    def test_get_sl_by_title_one(self):
+        assert shopping_list_service.get_shoppingList_by_title("Just a general Shopping List")[0].title == "Just a general Shopping List"
+
+    def test_get_sl_by_title_one_len(self):
+        assert len(shopping_list_service.get_shoppingList_by_title("Shopping")) == 3
+
     def test_delete_sl(self):
         shopping_list_service.delete_shoppingList(3)
         assert len(shopping_list_service.get_sl()) == 2
