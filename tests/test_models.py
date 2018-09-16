@@ -128,3 +128,14 @@ class TestShoppingListItemsClass(object):
     def test_full_delete_item(self):
         item_service.delete_item(2)
         assert len(sl_items_service.get_sl_item_by_item_id(2)) == 0
+
+class TestAdditionalTests(object):
+    """ Some of additional tests
+    """
+    def test_test_data_fixture(self, test_data):
+        pass
+
+    def test_get_shoppingList_by_item_name(self):
+        print(shopping_list_service.get_shoppingList_by_item_name("Coka"))
+        print(shopping_list_service.get_shoppingList_by_item_name("New"))
+        pass

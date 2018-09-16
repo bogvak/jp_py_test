@@ -46,6 +46,29 @@ def get_shoppingList_by_title(title: str) -> list:
     return results
 
 
+def get_shoppingList_by_item_name(name: str) -> list:
+    """Get shopping list by item name
+
+    Args:
+        Item name
+
+    Returns:
+        List of shopping lists
+
+    """
+    items_ = item_service.get_item_by_name(name)
+    if len(items_) > 0:
+        shoppping_lists_ids = set()
+        for item_ in items_:
+            sls_for_next_id = sl_items_service.get_sl_item_by_item_id(item_.id)
+            for next_sl in sls_for_next_id:
+                shoppping_lists_ids.add(next_sl.sl_id)
+        shoppping_lists_obj = []
+        for next_id in shoppping_lists_ids:
+            shoppping_lists_obj.append(get_shoppingList_by_id(next_id))
+        return shoppping_lists_obj
+
+
 def insert_new_shoppingList(_title: str, store: str = "") -> models.ShoppingList:
     """Insert new shopping list
 

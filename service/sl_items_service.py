@@ -44,6 +44,26 @@ def get_sl_item_by_item_id(_item_id: int) -> list:
     return models.Item_ShoppingList.query.filter(models.Item_ShoppingList.item_id == _item_id).all()
 
 
+def get_shoplist_for_item(item_id: int) -> list:
+    """Get all Shopping Lists objects for one Item
+
+    Args:
+        Item ID
+
+    Returns:
+        Shopping Lists list
+
+    """
+    sl_items = get_sl_item_by_item_id(item_id)
+    sl_quantity = []
+    for next_sl_item in sl_items:
+        next_item = shopping_list_service.get_shoppingList_by_id(next_sl_item.sl_id)
+        sl_quantity.append(dict(id=next_item.id, title=next_item.title, storeName=next_item.storeName,
+                                date_created=next_item.date_created))
+    print(sl_quantity)
+    return sl_quantity
+
+
 def get_items_in_shopping_list(sl_id: int):
     """Get all items records/IDs in Shopping List
 
