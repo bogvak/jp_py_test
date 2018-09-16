@@ -1,0 +1,11 @@
+[
+  "tests/test_models.py::TestShoppingListClass::()::test_create_sl[#1 Shopping-Rimi]",
+  "tests/test_models.py::TestShoppingListClass::()::test_create_sl[Shopping #2-Tiger]",
+  "tests/test_models.py::TestShoppingListClass::()::test_create_sl_nostore",
+  "tests/test_models.py::TestShoppingListClass::()::test_get_all_sl",
+  "tests/test_models.py::TestShoppingListClass::()::test_get_sl_by_id",
+  "tests/test_models.py::TestShoppingListClass::()::test_get_sl_by_title_one",
+  "tests/test_models.py::TestShoppingListClass::()::test_get_sl_by_title_one_len",
+  "tests/test_models.py::TestShoppingListClass::()::test_delete_sl",
+  "tests/test_models.py::TestShoppingListClass::()::test_update_sl"
+]

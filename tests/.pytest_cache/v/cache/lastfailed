@@ -1,0 +1,4 @@
+{
+  "test_models.py::TestItemClass::()::test_get_all_items": true,
+  "test_models.py::TestItemClass::()::test_get_item_by_id": true
+}
